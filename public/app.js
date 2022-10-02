@@ -15,12 +15,14 @@ const list = new ListTemplate(ul);
 // Events
 form.addEventListener("submit", (e) => {
     e.preventDefault();
+    let values;
+    values = [toFrom.value, details.value, +amount.value];
     let doc;
     if (type.value === "invoice") {
-        doc = new Invoice(toFrom.value, details.value, +amount.value);
+        doc = new Invoice(...values);
     }
     else {
-        doc = new Payment(toFrom.value, details.value, +amount.value);
+        doc = new Payment(...values);
     }
     list.render(doc, type.value, "end");
 });

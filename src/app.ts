@@ -22,11 +22,13 @@ const list = new ListTemplate(ul);
 // Events
 form.addEventListener("submit", (e: Event) => {
   e.preventDefault();
+  let values: [string, string, number];
+  values = [toFrom.value, details.value, +amount.value];
   let doc: HasFormatter;
   if (type.value === "invoice") {
-    doc = new Invoice(toFrom.value, details.value, +amount.value);
+    doc = new Invoice(...values);
   } else {
-    doc = new Payment(toFrom.value, details.value, +amount.value);
+    doc = new Payment(...values);
   }
   list.render(doc, type.value, "end");
 });
