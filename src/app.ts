@@ -1,5 +1,21 @@
-// Classes
+// Interfaces
+import { HasFormatter } from "./interfaces/HasFormatter.js";
+
+// Modules
 import { Invoice } from "./modules/Invoice.js";
+import { Payment } from "./modules/Payment.js";
+
+let docOne: HasFormatter;
+let docTwo: HasFormatter;
+
+docOne = new Invoice("yoshi", "web work", 250);
+docTwo = new Payment("mario", "plumbing work", 300);
+
+let docs: HasFormatter[] = [];
+docs.push(docOne);
+docs.push(docTwo);
+
+console.log(docs);
 
 const invOne = new Invoice("mario", "work on the mario website", 250);
 const invTwo = new Invoice("luigi", "work on the luigi website", 300);
